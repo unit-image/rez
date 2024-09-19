@@ -401,6 +401,7 @@ config_schema = Schema({
     "suite_visibility":                             SuiteVisibility_,
     "rez_tools_visibility":                         RezToolsVisibility_,
     "create_executable_script_mode":                ExecutableScriptMode_,
+    "use_canonical_path":                           OptionalBool,
     "suite_alias_prefix_char":                      Char,
     "cache_packages_path":                          OptionalStr,
     "package_definition_python_path":               OptionalStr,

@@ -313,7 +313,7 @@ implicit_packages = [
 # This is useful as Platform.os might show different
 # values depending on the availability of ``lsb-release`` on the system.
 # The map supports regular expression, e.g. to keep versions.
-# 
+#
 # .. note::
 #    The following examples are not necessarily recommendations.
 #
@@ -670,6 +670,8 @@ package_preprocess_function = None
 # - "after": Package's preprocess function is executed after the global preprocess;
 # - "override": Package's preprocess function completely overrides the global preprocess.
 package_preprocess_mode = "override"
+
+use_canonical_path = False
 
 ###############################################################################
 # Context Tracking
@@ -1119,7 +1121,7 @@ documentation_url = "https://rez.readthedocs.io"
 
 # Enables/disables colorization globally.
 #
-# .. warning:: 
+# .. warning::
 #    Turned off for Windows currently as there seems to be a problem with the colorama module.
 #
 # May also set to the string ``force``, which will make rez output color styling
