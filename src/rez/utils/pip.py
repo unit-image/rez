@@ -39,7 +39,7 @@ def pip_to_rez_package_name(dist_name):
     Returns:
         str: Rez-compatible package name.
     """
-    return dist_name.replace("-", "_")
+    return dist_name.replace("-", "_").lower()
 
 
 def pip_to_rez_version(dist_version, allow_legacy=True):
