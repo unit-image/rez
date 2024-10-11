@@ -32,6 +32,10 @@ def setup_parser(parser, completions=False):
         "-e", "--extra", nargs=REMAINDER,
         help="extra args passthrough to pip install (overrides pre-configured args if specified)"
     )
+    parser.add_argument(
+        "--uv", action="store_true",
+        help="Use UV instead of PIP"
+    )
 
 
 def command(opts, parser, extra_arg_groups=None):
@@ -43,13 +47,16 @@ def command(opts, parser, extra_arg_groups=None):
         # Prevent other rez.* loggers from printing debugs
         logging.getLogger('rez').setLevel(logging.INFO)
 
-    from rez.pip import pip_install_package
+    if opts.uv:
+        from rez.uv import uv_install_package as install_package
+    else:
+        from rez.pip import pip_install_package as install_package
 
     # a bit weird, but there used to be more options. Leave like this for now
     if not opts.install:
         parser.error("Expected one of: --install")
 
-    pip_install_package(
+    install_package(
         opts.PACKAGE,
         python_version=opts.py_ver,
         release=opts.release,
